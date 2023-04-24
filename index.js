@@ -71,21 +71,32 @@
 //6)
 const westley = {
   name: "Westley",
+//   lastName: "Bishop",
   numFingers: 5,
 }
 const rugen = {
   name: "Count Rugen",
+//   lastName: "Arch",
   numFingers: 6,
 }
 const inigo = {
   firstName: "Inigo",
+  lastName: "Montoya",
   greeting(person) {
-    let greeting = `Hello ${person.name}, my name is ${this.firstName}. `;
+    let greeting = `Hello ${person.name}, my name is ${this.firstName} ${this.lastName}. `;
     console.log(greeting + this.getCatchPhrase(person));
+    person.name === "Westley" ? console.log("You are safe."): console.log('May the odds be ever in your favor.')
   },
   getCatchPhrase(person) {
-    return "Nice to meet you.";
-  },
-};
+    if(person.numFingers === 6){
+        return 'You killed my father. Prepare to die.'
+    }
+    else {
+        return 'Meet to nice you.'
+    }
+    }
+  };
+
+
 inigo.greeting(westley);
 inigo.greeting(rugen);
