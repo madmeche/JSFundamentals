@@ -108,7 +108,7 @@ inigo.greeting(westley);
 inigo.greeting(rugen);
 */
 
-// (7)
+/* (7)
 const basketballGame = {
     score: 0,
     
@@ -150,4 +150,36 @@ const basketballGame = {
     basketballGame.basket().basket().basket().freeThrow().fouls().freeThrow().basket().threePointer()
     .halfTime().basket().basket().basket().freeThrow().threePointer().threePointer().basket().threePointer()
     .fullTime()
-    
+    */
+
+/* (8)
+    const sydney = {
+        name: 'Sydney',
+        population: 5_121_000,
+        state: 'NSW',
+        founded: '26 January 1788',
+        timezone: 'Australia/Sydney'
+        }
+
+    const nashville = {
+        name: 'Nashville',
+        population: 692_587,
+        state: 'Tennessee',
+        founded: '1779',
+        timezone: 'CST'
+        }
+
+    const printProperties = (param) => {  
+        for (let property in param) {
+            console.log(property, ":", param[property])
+        }
+    }   
+
+    printProperties(sydney)
+    printProperties(nashville)
+    */
+
+// (9)
+    let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+    let dog1 = 'Bingo';
+    let cat1 = { name: 'Fluffy', breed: 'Siberian' };
