@@ -179,7 +179,66 @@ const basketballGame = {
     printProperties(nashville)
     */
 
-// (9)
-    let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
-    let dog1 = 'Bingo';
-    let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+/* (9)
+let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+let moreSports = teamSports;
+moreSports.push('Slamball')
+moreSports.unshift('Golf')
+
+console.log(moreSports)
+console.log(teamSports)
+
+let dog1 = 'Bingo';
+let dog2 = dog1;
+dog2 = 'Rouge';
+
+console.log(dog1, dog2)
+
+let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+let cat2 = cat1;
+
+cat2.name = 'Lex'
+
+console.log(cat1)
+*/
+
+/*(10)
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.human = true;
+    }
+
+let Callan = new Person ("Callan", 7);
+let Chris = new Person ("Chris", 35);
+let Madeleine = new Person("Madeleine", 33)
+
+// class Person {
+//     constructor(name,age){
+//     this.name = name;
+//     this.age = age;
+//     this.human = true;
+//     }
+// }
+
+const printProperties = (param) => {  
+    for (let property in param) {
+        console.log(property, ":", param[property]);
+    }
+}
+
+printProperties(Callan)
+
+function canDrive(name, age) {
+  
+    if (person.age >= 16) {
+      return person.name + " is old enough to drive.";
+    }
+  
+    else {
+      return person.name + " is not old enough to drive.";
+    }}
+  
+    canDrive(Callan);
+ */
+
