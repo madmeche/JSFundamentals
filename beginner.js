@@ -207,11 +207,24 @@ function Person(name, age) {
     this.name = name;
     this.age = age;
     this.human = true;
+
+    this.canDrive = function (name, age) {
+        name = name;
+        age = age;
+      console.log(this.age)
+        // Person >= 16 ? return Person.name + "is old enough to drive." ; return Person.name + "is NOT old enough to drive."
+        if (this.age >= 16) {
+          return this.name + " is old enough to drive.";
+        }
+      
+        else {
+          return this.name + " is NOT old enough to drive.";
+        }
+    }
     }
 
-const Callan = Person ("Callan", 7);
+const Callan = new Person ("Callan", 7);
 const Chris = new Person ("Chris", 35);
-const Madeleine = new Person("Madeleine", 33)
 
 const printProperties = (param) => {  
     for (let property in param) {
@@ -219,20 +232,29 @@ const printProperties = (param) => {
     }
 }
 
-printProperties(Chris)
+// printProperties(Chris)
 
-function canDrive(name, age) {
-  
-    // Person >= 16 ? return Person.name + "is old enough to drive." ; return Person.name + "is NOT old enough to drive."
-    if (Person.age >= 16) {
-      return Person.name + " is old enough to drive.";
-    }
-  
-    else {
-      return Person.name + " is NOT old enough to drive.";
+class PersonClass  {
+    constructor(name,age) {
+    this.name = name;
+    this.age = age; 
+    }  
+    canDrive() {
+        if (this.age >= 16) {
+            return this.name + " is old enough to drive.";
+          }
+        
+          else {
+            return this.name + " is NOT old enough to drive.";
+          }
     }
 }
-  
-    console.log(canDrive(Chris))
+
+
+const Madeleine = new PersonClass("Madeleine", 33)
+
+// printProperties(Madeleine)
+ 
+    console.log(Callan.canDrive())
  
 

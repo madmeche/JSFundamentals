@@ -114,20 +114,30 @@ let fixedTen = tenCents.toFixed(2);
 // a) console.log(fixedTwenty + fixedTen) //why is this not working? --> it combines the results of the two instead of adding the values
 */
 
-// (6)
-//unique(duplicatesArray)
-
+/* (6)
 const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow'];
 const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43];
 
-let unique = [];
-chars.forEach((c) => {
-    if (!uniqueChars.includes(c)) {
-        uniqueChars.push(c);
-    }
-});
+function unique(duplicatesArray) {
+    let dupes = new Set(duplicatesArray)
+    return dupes
+}
+console.log(unique(colours))
+console.log(unique(testScores))
+*/
 
-console.log(uniqueChars);
-// console.log(unique(colours)) // [ 'red', 'green', 'blue', 'yellow',
-// console.log(unique(testScores)) // [ 55, 84, 97, 63, 32, 91, 43 ]
+// (7)
+const books = [
+    { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+    { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+    { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+    { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+    { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+    ];
 
+function getBookTitle(bookId) {
+    let mockingbird = books.find(books => books.title == 'To Kill a Mockingbird');
+    let date = books.find(books => books.title == '1984');
+    return bookId
+}
+console.log(getBookTitle.mockingbird)
