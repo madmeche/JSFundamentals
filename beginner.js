@@ -202,24 +202,16 @@ cat2.name = 'Lex'
 console.log(cat1)
 */
 
-/*(10)
+//(10)
 function Person(name, age) {
     this.name = name;
     this.age = age;
     this.human = true;
     }
 
-let Callan = new Person ("Callan", 7);
-let Chris = new Person ("Chris", 35);
-let Madeleine = new Person("Madeleine", 33)
-
-// class Person {
-//     constructor(name,age){
-//     this.name = name;
-//     this.age = age;
-//     this.human = true;
-//     }
-// }
+const Callan = Person ("Callan", 7);
+const Chris = new Person ("Chris", 35);
+const Madeleine = new Person("Madeleine", 33)
 
 const printProperties = (param) => {  
     for (let property in param) {
@@ -227,18 +219,20 @@ const printProperties = (param) => {
     }
 }
 
-printProperties(Callan)
+printProperties(Chris)
 
 function canDrive(name, age) {
   
-    if (person.age >= 16) {
-      return person.name + " is old enough to drive.";
+    // Person >= 16 ? return Person.name + "is old enough to drive." ; return Person.name + "is NOT old enough to drive."
+    if (Person.age >= 16) {
+      return Person.name + " is old enough to drive.";
     }
   
     else {
-      return person.name + " is not old enough to drive.";
-    }}
+      return Person.name + " is NOT old enough to drive.";
+    }
+}
   
-    canDrive(Callan);
- */
+    console.log(canDrive(Chris))
+ 
 
