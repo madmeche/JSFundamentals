@@ -94,29 +94,71 @@ Add a fifth test which uses a large delay time (greater than 10 seconds)
 // // is there a way to do this without adding it before the 10 second counter?
 
 // 3)
-function printMe() {
-    console.log('printing debounced message')
-    }
-    // printMe = debounce(printMe); //create this debounce function for a)
-    /*fire off 3 calls to printMe within 300ms - only the LAST one should print, after
-    1000ms of no calls*/
-    setTimeout( printMe, 100);
-    setTimeout( printMe, 200);
-    setTimeout( printMe, 300);
-//a)
+// function printMe() {
+//     console.log('printing debounced message')
+//     }
+//     // printMe = debounce(printMe); //create this debounce function for a)
+//     /*fire off 3 calls to printMe within 300ms - only the LAST one should print, after
+//     1000ms of no calls*/
+//     setTimeout( printMe, 100);
+//     setTimeout( printMe, 200);
+//     setTimeout( printMe, 300);
+// //a)
 /*Create a debounce(func) decorator, which is a wrapper that takes a 
 function func and suspends calls to func until there's 1000 milliseconds 
 of inactivity. After this 1 second pause, the most recent call to 
 func should be executed and any others ignored.*/
 
-function debounce(func) {
-    return function() {
-        let bounceDelay = setTimeout
-        setTimeout(func, 1000);  
-    }
+// function debounce(func) {
+//     return function() {
+//         let bounceDelay = setTimeout
+//         setTimeout(func, 1000);
+//     }
+// }
+// console.log(debounce(printMe))
+
+// 4)
+function fibonacci(num) {
+  let num1 = 0;
+  let num2 = 1;
+  let sum;
+
+  for (i = 0; i < num; i++) {
+    // sum = num1 + num2;
+    // num1= sum;
+    // num2 = sum ++;
+
+    // num2 += sum
+
+    sum = num1 + num2; //then num1 must become then become the base
+    num1 = num2;
+    num2 = sum;
+  }
+  return num2;
 }
-console.log(debounce(printMe))
 
+console.log("Fibonacci (4): " + fibonacci(4)); // always starting on 0
+console.log("Fibonacci(10): " + fibonacci(10));
 
-  
+// b) **********
+/*Write a new version printFibonacciTimeouts() that uses nested setTimeout
+calls to do the same thing*/
 
+// c) ***********
+/*Extend one of the above functions to accept a limit argument, which tells it how many
+numbers to print before stopping.*/
+
+// 5)
+/*The following car object has several properties and a method which uses them to print a
+description. When calling the function normally this works as expected, but using it from
+within setTimeout fails. Why?*/
+let car = {
+  make: "Porsche",
+  model: "911",
+  year: 1964,
+  description() {
+    console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+  },
+};
+// car.description(); //works
+setTimeout(car.description, 200); //fails
