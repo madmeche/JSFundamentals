@@ -198,14 +198,126 @@ const books = [
 // console.log(getTitles('f'))
 
 //e)
-function latestBook() {
-  let latest = books[0];
-  books.forEach((book) => {
-    if (book.year > latest.year) { //
-      latest = book;
-    }
-  });
-  return latest;
-}
+// function latestBook() {
+//   let latest = books[0];
+//   books.forEach((book) => {
+//     if (book.year > latest.year) { //most recent, so new function
+//       latest = book;
+//     }
+//   });
+//   return latest;
+// }
 
-console.log(latestBook());
+// console.log(latestBook()); //Revisit
+
+//8)
+// const phoneBookABC = new Map(); //an empty map to begin with
+// phoneBookABC.set("Annabelle", "0412312343");
+// phoneBookABC.set("Barry", "0433221117");
+// phoneBookABC.set("Caroline", "0455221182");
+
+// // console.log(phoneBookABC)
+// //a)
+// const phoneBookDEF = new Map();
+// phoneBookDEF.set("Daniel", "31544568762");
+// phoneBookDEF.set("Eve", "0654567891");
+// phoneBookDEF.set("Francis", "0756321789");
+
+//b)
+// console.log(phoneBookABC,phoneBookDEF)
+
+//c)
+// phoneBookABC.set("Caroline",'0563578924')
+// console.log(phoneBookABC)
+
+//d)
+// function printPhoneBook(contacts){
+//   console.log(phoneBookABC,phoneBookDEF)
+//     }
+// printPhoneBook()
+
+// printPhoneBook(phoneBookABC,phoneBookDEF)
+// //  //e)
+// function printPhoneBook(name, phone) {
+//   const phonebook = new Map([...name, ...phone]);
+//   return phonebook;
+// }
+// console.log(printPhoneBook(phoneBookABC, phoneBookDEF));
+
+// //f)
+// function display(name,phone){
+//     let allBook = printPhoneBook(name,phone);
+
+//     for (let x of allBook.keys()){
+//         console.log(x);
+//     }
+
+// }
+
+// display(phoneBookABC,phoneBookDEF); // review --> combining them with writing both
+
+//9)
+// let salaries = {
+//   Timothy: 35000,
+//   David: 25000,
+//   Mary: 55000,
+//   Christina: 75000,
+//   James: 43000,
+// };
+
+// //a)
+// function sumSalaries(salaries) {
+//   let total = 0;
+//   for (let key in salaries) {
+//     total += salaries[key];
+//   }
+//   return total;
+// }
+
+// console.log(sumSalaries(salaries));
+
+//b)
+// function topEarner(salaries) {
+//   let max = 0;
+//   let maxKey = {};                 //stores keyname:value
+//   for (let key in salaries) {
+//     if (salaries[key] > max) {    //  creating a loop if the key within salaries
+//         max = salaries[key];      //is greater than the first value, that becomes the max value (it finishes going through the loop (list))
+//         maxKey = key;            // then recognizes it as the keyname :value, the returns the 'key' which is the first name
+//         }
+//     }
+//     return maxKey
+//   }
+
+// console.log(topEarner(salaries))
+
+//10)
+// const today = new Date();
+// console.log('Current time is ' + today.toLocaleTimeString())
+// console.log(today.getHours() + ' hours have passed so far today')
+// //a)
+// console.log(today.getHours()*60 + today.getMinutes() + ' minutes have passed today.')
+// //b)
+// console.log(today.getHours()*3600 + ' seconds have passed today.')
+// //c)
+// function birthday() {
+//   let startDate = "1990-03-27";
+//   let bDay = new Date(startDate);
+//   let year = today.getFullYear() - bDay.getFullYear();
+//   let month = today.getMonth() - bDay.getMonth();
+//   let days = today.getDay() - bDay.getDay();
+//   console.log(
+//     "I am " + year + "years " + month + " months, and " + days + " days old."
+//   );
+// }
+
+// birthday()      // don't forget to call out today from above when running
+
+//d)
+function daysInBetween(date1, date2) {
+  let date1 = new Date("1945-01-29");
+  let date2 = new Date("2022-12-23");
+  let difference = date2 - date1;
+ return difference
+}
+daysInBetween()
