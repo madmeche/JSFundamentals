@@ -1,0 +1,14 @@
+<html>
+<body>
+   <h2>JavaScript Number toFixed()</h2>
+   <p>format a number with two decimals:</h3>
+   <p id="number">Number before formatting:<br></p>
+   <p id="result">Number After formatting:<br></p>
+   <script>
+      var number = 9.1291754;
+      document.getElementById("number").innerHTML += number;
+      var fixedNum = number.toFixed(2);
+      document.getElementById("result").innerHTML += fixedNum;
+   </script>
+</body>
+</html>

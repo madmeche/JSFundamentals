@@ -104,15 +104,42 @@ console.log(camelCase_2(prop2));
 console.log(camelCase_2(prop3));
 */
 
-/* (5)
-let twentyCents = 0.20
-let tenCents = 0.10
-console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
-// 0.2 + 0.1 = 0.30000000000000004
-let fixedTwenty = twentyCents.toFixed(2);
-let fixedTen = tenCents.toFixed(2);
-// a) console.log(fixedTwenty + fixedTen) //why is this not working? --> it combines the results of the two instead of adding the values
-*/
+// (5)
+// let twentyCents = 0.20
+// let tenCents = 0.10
+// // console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`)
+// // 0.2 + 0.1 = 0.30000000000000004
+// let fixedTwenty = twentyCents.toFixed(2);
+// let fixedTen = tenCents.toFixed(2);
+// //a)
+// // console.log(fixedTwenty + fixedTen) //why is this not working? --> it combines the results of the two instead of adding the values
+// //b)
+
+// function currencyAddition(float1, float2) {
+//     sum = float1 + float2
+//     return sum.toFixed(2)
+// }
+
+// console.log(currencyAddition(.263,.1485))
+// // //c)
+// function currencyOperation(float1, float2, operation, numDecimals) {
+//   switch (operation) {
+//     case "+":
+//       result = float1 + float2
+//       break;
+//     case "-":
+//       result = float1 - float2
+//       break;
+//     case "*":
+//       result= float1 * float2
+//       break;
+//     case "/":
+//       result = float1 / float2
+//       break;
+//   }
+//   return result.toFixed(numDecimals)
+// }
+// console.log(currencyOperation(1.7, 25.03, '-', 4 ))
 
 /* (6)
 const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow'];
@@ -126,18 +153,59 @@ console.log(unique(colours))
 console.log(unique(testScores))
 */
 
-// (7)
+// // // (7)
 const books = [
-    { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
-    { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
-    { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
-    { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
-    { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
-    ];
+  {
+    id: 1,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+  },
+  { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960 },
+  { id: 3, title: "1984", author: "George Orwell", year: 1949 },
+  { id: 4, title: "Brave New World", author: "Aldous Huxley", year: 1932 },
+  {
+    id: 5,
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    year: 1951,
+  },
+];
 
-function getBookTitle(bookId) {
-    let mockingbird = books.find(books => books.title == 'To Kill a Mockingbird');
-    let date = books.find(books => books.title == '1984');
-    return bookId
+//a)
+// function getBookTitle(bookId) {
+//     return books.find(book => bookId === book.id)
+// }
+// console.log(getBookTitle(1))
+
+//b)
+// function getOldBooks(){
+//     return books.filter(book => book.year <1950)
+
+// }
+// console.log(getOldBooks())
+
+//c)
+// function addGenre(){
+//     return books.map(book => ({...book, Genre: 'Classic' }))
+// }
+// console.log(addGenre())
+//d)
+// function getTitles(authorInitial){
+//     let newBooks = books.filter(book => book.author === authorInitial)
+//     return newBooks.map(book => book.author === authorInitial);
+// }
+// console.log(getTitles('f'))
+
+//e)
+function latestBook() {
+  let latest = books[0];
+  books.forEach((book) => {
+    if (book.year > latest.year) { //
+      latest = book;
+    }
+  });
+  return latest;
 }
-console.log(getBookTitle.mockingbird)
+
+console.log(latestBook());

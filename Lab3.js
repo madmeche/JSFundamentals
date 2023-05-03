@@ -31,9 +31,9 @@ async catchfunction . waitForPromise() { // async function allows synchronous pr
         // console.log('Start Preparing Pizza')
         return new promise((resolve, reject) => {
             if (Math.random() > 0.01) {
-                setTimeout(()=> resolve ('Random number ok'), 5);
+                setTimeout(()=> resolve ('Prepping Pizza'), 5);
             } else {
-                setTimeout(()=> reject('Random number too low'), 5);
+                setTimeout(()=> reject('Dough not Prepared'), 5);
             }
     });
     };
@@ -93,7 +93,17 @@ async catchfunction . waitForPromise() { // async function allows synchronous pr
         .catch( (error) => console.log('Error!' + error));  
 
     func2()
+        .then( (result) => console.log('Success! '+ result))
+        .catch( (error) => console.log('Error!' + error)); 
     func3()
+        .then( (result) => console.log('Success! '+ result))
+        .catch( (error) => console.log('Error!' + error)); 
     func4()
+        .then( (result) => console.log('Success! '+ result))
+        .catch( (error) => console.log('Error!' + error)); 
     func5()
+        .then( (result) => console.log('Success! '+ result))
+        .catch( (error) => console.log('Error!' + error)); 
     func6()
+        .then( (result) => console.log('Success! '+ result))
+        .catch( (error) => console.log('Error!' + error)); 
