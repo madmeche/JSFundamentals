@@ -292,7 +292,7 @@ const books = [
 // console.log(topEarner(salaries))
 
 //10)
-// const today = new Date();
+const today = new Date();
 // console.log('Current time is ' + today.toLocaleTimeString())
 // console.log(today.getHours() + ' hours have passed so far today')
 // //a)
@@ -314,10 +314,13 @@ const books = [
 // birthday()      // don't forget to call out today from above when running
 
 //d)
-function daysInBetween(date1, date2) {
-  let date1 = new Date("1945-01-29");
-  let date2 = new Date("2022-12-23");
-  let difference = date2 - date1;
- return difference
-}
-daysInBetween()
+// function daysInBetween(date1, date2) {
+//     date1= new Date("2019-06-29") ;
+//     date2= new Date("2019-06-30");
+
+//    let difference = date2.getDate() - date1.getDate();
+// //    let daysDiff = difference * 
+// console.log(difference.getDay)
+
+// }
+// console.log(daysInBetween("2019-06-29","2019-07-29"))
