@@ -118,27 +118,27 @@ func should be executed and any others ignored.*/
 // console.log(debounce(printMe))
 
 // 4)
-function fibonacci(num) {
-  let num1 = 0;
-  let num2 = 1;
-  let sum;
+// function fibonacci(num) {
+//   let num1 = 0;
+//   let num2 = 1;
+//   let sum;
 
-  for (i = 0; i < num; i++) {
-    // sum = num1 + num2;
-    // num1= sum;
-    // num2 = sum ++;
+//   for (i = 0; i < num; i++) {
+//     // sum = num1 + num2;
+//     // num1= sum;
+//     // num2 = sum ++;
 
-    // num2 += sum
+//     // num2 += sum
 
-    sum = num1 + num2; //then num1 must become then become the base
-    num1 = num2;
-    num2 = sum;
-  }
-  return num2;
-}
+//     sum = num1 + num2; //then num1 must become then become the base
+//     num1 = num2;
+//     num2 = sum;
+//   }
+//   return num2;
+// }
 
-console.log("Fibonacci (4): " + fibonacci(4)); // always starting on 0
-console.log("Fibonacci(10): " + fibonacci(10));
+// console.log("Fibonacci (4): " + fibonacci(4)); // always starting on 0
+// console.log("Fibonacci(10): " + fibonacci(10));
 
 // b) **********
 /*Write a new version printFibonacciTimeouts() that uses nested setTimeout
@@ -151,7 +151,7 @@ numbers to print before stopping.*/
 // 5)
 /*The following car object has several properties and a method which uses them to print a
 description. When calling the function normally this works as expected, but using it from
-within setTimeout fails. Why?*/
+within setTimeout fails. Why?*/ // it is calling for a 'this' function
 let car = {
   make: "Porsche",
   model: "911",
@@ -159,6 +159,26 @@ let car = {
   description() {
     console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
   },
+
 };
 // car.description(); //works
-setTimeout(car.description, 200); //fails
+//   function slowDown() {
+//   console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+//   setTimeout(car.description, 200); //fails
+//   } 
+// slowDown()
+// a)
+setTimeout(() => { //A string passed to setTimeout() is evaluated in the global context, so local symbols in the context where setTimeout() was called will not be available when the string is evaluated as code.
+  console.log(`This car is a ${car.make} ${car.model} from ${car.year}`);
+}, 200);
+
+// b)
+/*Change the year for the car by creating a clone of the original and overriding it*/
+
+
+function printnewYear() {
+  const newYear = new Map({...car, year:1979});
+  return newYear;
+}
+
+// return car(newYear => ({...newYear, year: 1979}))
