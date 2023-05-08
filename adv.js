@@ -152,33 +152,54 @@ numbers to print before stopping.*/
 /*The following car object has several properties and a method which uses them to print a
 description. When calling the function normally this works as expected, but using it from
 within setTimeout fails. Why?*/ // it is calling for a 'this' function
-let car = {
-  make: "Porsche",
-  model: "911",
-  year: 1964,
-  description() {
-    console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
-  },
+// let car = {
+//   make: "Porsche",
+//   model: "911",
+//   year: 1964,
+//   description() {
+//     console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+//   },
 
-};
+// };
 // car.description(); //works
 //   function slowDown() {
 //   console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
 //   setTimeout(car.description, 200); //fails
-//   } 
+//   }
 // slowDown()
 // a)
-setTimeout(() => { //A string passed to setTimeout() is evaluated in the global context, so local symbols in the context where setTimeout() was called will not be available when the string is evaluated as code.
-  console.log(`This car is a ${car.make} ${car.model} from ${car.year}`);
-}, 200);
+// setTimeout(() => { //A string passed to setTimeout() is evaluated in the global context, so local symbols in the context where setTimeout() was called will not be available when the string is evaluated as code.
+//   console.log(`This car is a ${car.make} ${car.model} from ${car.year}`);
+// }, 200);
 
 // b)
 /*Change the year for the car by creating a clone of the original and overriding it*/
-
-
-function printnewYear() {
-  const newYear = new Map({...car, year:1979});
-  return newYear;
-}
+// reference: https://www.freecodecamp.org/news/a-beginners-guide-to-javascripts-prototype/
+// function printnewYear() {
+//   year: 1979;   //also tried this.year
+//   const newYear = new Map({...car, year:1979});
+//   return newYear;
+// }
 
 // return car(newYear => ({...newYear, year: 1979}))
+
+/*Does the delayed description() call use the original values or the new values from
+b)? Why?*/ //It is calling the original.
+
+// c)
+// let car2 = car.description.bind(setTimeouts); // still pulling from car. returning '[Function: bound description]' before the statement.
+// console.log(car2)                             //also set bind to pull from printNewYear()
+
+// e) ********
+
+// 6)
+function multiply(a, b) {
+  console.log(a * b);
+}
+multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
+
+// a)Use the example multiply function below to test it with, as above, and assume that all
+//delayed functions will take two parameters
+
+multiply.delay(500)(7, 9); // prints 49 after 500 milliseconds
+multiply.delay(500)(24, 8); // prints 64 after 500 milliseconds
