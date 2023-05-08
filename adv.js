@@ -314,14 +314,149 @@ parameters*/
 // console.log(student2.toString())
 
 // 8)
-function Person(name, age, gender) {
-  this.name = name;
-  this.age = age;
-  this.gender = gender;
+// class DigitalClock {
+//   constructor(prefix) {
+//   this.prefix = prefix;
+//   }
+//   display() {
+//   let date = new Date();
+//   //create 3 variables in one go using array destructuring
+//   let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
+//   date.getSeconds()];
+//   if (hours < 10) hours = '0' + hours;
+//   if (mins < 10) mins = '0' + mins;
+//   if (secs < 10) secs = '0' + secs;
+//   // console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+//   }
+//   stop() {
+//   clearInterval(this.timer);
+//   }
+//   start() {
+//   this.display();
+//   this.timer = setInterval(() => this.display(), 1000);
+//   }
+//   }
+//   const myClock = new DigitalClock('my clock:')
+//   myClock.start()
+
+// a) https://javascript.info/class-inheritance
+/*Create a new class PrecisionClock that inherits from DigitalClock and adds the
+parameter precision – the number of ms between 'ticks'. This precision parameter
+should default to 1 second if not supplied.*/
+
+// class PrecisionClock extends DigitalClock {
+//   constructor(prefix, precision = 1000) {
+//     this.prefix;
+//     this.precision = precision;
+//     let ms = myClock.getMilliseconds;
+//     console.log(`${this.prefix} ${hours}:${mins}:${secs}:${ms}`) // still not printing ms
+//     }
+//     start() {
+//       this.display();
+//       this.timer = setInterval(() => this.display(), this.precision())
+//     }
+    
+// }
+
+// b) 
+/*Create a new class AlarmClock that inherits from DigitalClock and adds the
+parameter wakeupTime in the format hh:mm. When the clock reaches this time, it
+should print a 'Wake Up' message and stop ticking. This wakeupTime parameter should
+default to 07:00 if not supplied.*/
+// class AlarmClock extends DigitalClock {
+//   constructor(prefix, wakeupTime = "07:00") {
+//   this.prefix = prefix
+//     this.wakeupTime = wakeupTime
+// }
+// display() {
+//   let date = new Date();
+//   let [hours, mins] = [date.getHours(), date.getMinutes()]; 
+//   let currentTime = `${hours}:${mins}`; //still printing out the seconds
+//   console.log(`${this.prefix} ${currentTime}`);
+//   if (currentTime === this.wakeupTime) {
+    
+//     this.stop();
+//   }
+// }
+// }
+
+// 9)
+// a) 
+/*Create a promise-based alternative randomDelay() that delays execution for a
+random amount of time (between 1 and 20 seconds) and returns a promise we can use
+via .then(), as in the starter code below*/
+//installed npm promise
+// b) 
+/*If the random delay is even, consider this a successful delay and resolve the promise,
+and if the random number is odd, consider this a failure and reject it*/
+function randomDelay() {
+  let delay = Math.floor(Math.random() * 20) * 1000;
+  return new Promise((resolve, reject) => {
+            if (delay % 2 === 0) {
+              setTimeout(() => resolve(delay), delay);
+            } else {
+              setTimeout(() => reject(delay), delay);
+            }
+          });
+  }
+//   randomDelay().then(() => console.log('There appears to have been a delay.'));
+
+  // c) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
+  // d)
+//  randomDelay().then(delay => {
+//   console.log(`There appears to have been a successful delay of ${delay} ms.`);
+//   })
+//   .catch(delay => {
+//     console.log(`There appears to have been a failed delay of ${delay} ms.`);
+//   });
+
+//10)
+//run 'npm init' and accept all the defaults
+//run 'npm install node-fetch'
+//add this line to package.json after line 5: "type": "module",
+import fetch from 'node-fetch'
+globalThis.fetch = fetch
+function fetchURLData(url) {
+let fetchPromise = fetch(url).then(response => {
+if (response.status === 200) {
+return response.json();
+} else {
+throw new Error(`Request failed with status ${response.status}`);
+}
+
+});
+return fetchPromise;
+}
+fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
+.then(data => console.log(data))
+.catch(error => console.error(error.message));
+
+// a) https://javascript.info/async-await
+/* Write a new version of this function using async/await */
+async function fetchURLDataAsync(url) {
+      try {
+        const response = await fetch(url);
+    
+        if (response.status === 200) {
+          return await response.json();
+        } else {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+      } catch (error) {
+        throw new error ('Error: ${error.message)');
+      }
+    }
   
-  }
-  Person.prototype.toString = function(name, age, gender) {
-  return (this.name + ', ' + this.age + ', ' + this.gender )
-  }
-  const person1 = new Person('James Brown', 73, 'male')
-  console.log('person1: '+person1.toString()) //prints person1: [object Object]
+    fetchURLDataAsync('https://jsonplaceholder.typicode.com/todos/1')
+      .then(data => console.log(data))
+      .catch(error => console.error(error.message));
+
+// b)
+/*Test both functions with valid and invalid URLs*/
+fetchURLData('https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises')
+  .then(data => console.log(data))
+  .catch(error => console.error(error.message));
+
+  fetchURLData('https://developer.mozilla.org/en-US/docs/Learn/JavaScript/abcdefg')
+  .then(data => console.log(data))
+  .catch(error => console.error(error.message));
