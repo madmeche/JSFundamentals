@@ -1,3 +1,5 @@
+// 1)
+
 // function makeCounter() {
 //   let currentCount = 0;
 //   return function () {
@@ -86,6 +88,7 @@ Add a fifth test which uses a large delay time (greater than 10 seconds)
 // setTimeout(delayMsg, 0, "#3: Delayed by 0ms");
 // delayMsg("#4: Not delayed at all");
 
+// d)
 // function myStopFunction() {
 //   clearTimeout(delayMsg, 120);
 
@@ -117,32 +120,84 @@ func should be executed and any others ignored.*/
 // }
 // console.log(debounce(printMe))
 
-// 4)
-// function fibonacci(num) {
-//   let num1 = 0;
-//   let num2 = 1;
-//   let sum;
+// b)
+/*Extend the debounce decorator function to take a second argument ms, which defines the
+length of the period of inactivity instead of hardcoding to 1000ms*/
 
-//   for (i = 0; i < num; i++) {
-//     // sum = num1 + num2;
-//     // num1= sum;
-//     // num2 = sum ++;
-
-//     // num2 += sum
-
-//     sum = num1 + num2; //then num1 must become then become the base
-//     num1 = num2;
-//     num2 = sum;
+// function newDebounce(func,ms) {
+//   return function() {
+//     let newBounceDelay = setTimeout
+//     setTimeout(func, ms);
 //   }
-//   return num2;
 // }
+// console.log(newDebounce(printMe, 3000))
+
+// c)
+/*Extend debounce to allow the original debounced function printMe to take an argument
+msg which is included in the console.log statement.*/
+
+// function printMe(msg) {
+//   console.log(`printing debounced message: ${msg}`);
+// }
+
+// printMe('check check')
+
+// 4)
+function fibonacci(num) {
+  let num1 = 0;
+  let num2 = 1;
+  let sum;
+
+  //   for (i = 0; i < num; i++) {
+  //     // sum = num1 + num2;
+  //     // num1= sum;
+  //     // num2 = sum ++;
+
+  //     // num2 += sum
+
+  //     sum = num1 + num2; //then num1 must become then become the base
+  //     num1 = num2;
+  //     num2 = sum;
+  //   }
+}
 
 // console.log("Fibonacci (4): " + fibonacci(4)); // always starting on 0
 // console.log("Fibonacci(10): " + fibonacci(10));
 
-// b) **********
+// b) ***** https://stackoverflow.com/questions/17574571/nested-settimeout-alternative
 /*Write a new version printFibonacciTimeouts() that uses nested setTimeout
 calls to do the same thing*/
+
+// function printFibonacciTimeouts(num) {  // could make a function calling out 1000ms
+//   for (i = 0; i < num; i++) {
+//         sum = num1 + num2;
+//         num1= sum;
+//         num2 = sum ++;
+//   // console.log(fibonacci)
+//   // setTimeout(function () {
+//   //     setTimeout(function () {
+//   //         console.log()
+//   //         setTimeout(function () {
+//   //             console.log()
+
+//   //         }, 1000)
+//   //     }, 1000)
+
+//   // }, 1000)
+
+// }
+// }
+// printFibonacciTimeouts(1)
+
+// function printFibonacciTimeouts(num,ms) {
+
+// let timeoutId = setTimeout(fibonacci, ms)
+//     setTimeout( fibonacci, 1000);
+//     setTimeout( fibonacci, 1000);
+//     setTimeout( fibonacci, 1000);
+//   return num2;
+// }
+// printFibonacciTimeouts(1,1000)
 
 // c) ***********
 /*Extend one of the above functions to accept a limit argument, which tells it how many
@@ -192,14 +247,81 @@ b)? Why?*/ //It is calling the original.
 
 // e) ********
 
-// 6)
-function multiply(a, b) {
-  console.log(a * b);
-}
-multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
+// 6) https://stackoverflow.com/questions/17112131/javascript-delay-function
+// function multiply(a, b) {
+//   console.log(a * b);
+// }
+// // multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
 
-// a)Use the example multiply function below to test it with, as above, and assume that all
-//delayed functions will take two parameters
+// // a)
+// /*Use the example multiply function below to test it with, as above, and assume that all
+// delayed functions will take two parameters*/
+// // Function.prototype.delay = function(ms) {
+// //   var fn = this;
+// //   return function(a,b) {
+// //       setTimeout(fn(a,b), ms);
+// //   };
+// // };
+// multiply(5,9, 5000)     //delay not working
 
-multiply.delay(500)(7, 9); // prints 49 after 500 milliseconds
-multiply.delay(500)(24, 8); // prints 64 after 500 milliseconds
+// // b)
+/*Use apply to improve your solution so that delayed functions can take any number of
+parameters*/
+
+// c)
+// function multiply(a, b, c, d) {
+//       console.log(a * b * c * d);
+//     }
+
+// // 7) W3Schools
+// function Person(name, age, gender) {
+//   this.name = name;
+//   this.age = age;
+//   this.gender = gender;
+// }
+
+// // a)
+// Person.prototype.toString = function () {
+//   return `Name: ${this.name}, Age: ${this.age}, Gender: ${this.gender}`;
+// };
+
+// // b)
+// const person1 = new Person("Callan", 7, "male");
+// const person2 = new Person("Rose Mae", 1, "female");
+
+// console.log(person1.toString());
+// console.log(person2.toString())
+
+// // c)
+// /*Create a new constructor function Student that uses call to inherit from Person and
+// add an extra property cohort*/
+
+// function Student(name, age, gender, cohort) {
+
+// Person.call(this, name, age, gender); // When we make a constructor function using the new keyword, “this” returns an empty object, it creates a new empty object where
+// this.cohort = cohort;                 //we can define different properties.
+// }
+
+// // d)
+// Student.prototype.toString = function() {
+//   return (`Name: ${this.name}, Age: ${this.age}, Gender: ${this.gender}, Cohort: ${this.cohort}`);
+// }
+
+// const student1= new Student("Callan", 7, "male", "IoD");
+// const student2 = new Student("Rose Mae", 1, "female", "PE");
+
+// console.log(student1.toString())
+// console.log(student2.toString())
+
+// 8)
+function Person(name, age, gender) {
+  this.name = name;
+  this.age = age;
+  this.gender = gender;
+  
+  }
+  Person.prototype.toString = function(name, age, gender) {
+  return (this.name + ', ' + this.age + ', ' + this.gender )
+  }
+  const person1 = new Person('James Brown', 73, 'male')
+  console.log('person1: '+person1.toString()) //prints person1: [object Object]
