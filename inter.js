@@ -292,7 +292,7 @@ const books = [
 // console.log(topEarner(salaries))
 
 //10)
-const today = new Date();
+// const today = new Date();
 // console.log('Current time is ' + today.toLocaleTimeString())
 // console.log(today.getHours() + ' hours have passed so far today')
 // //a)
